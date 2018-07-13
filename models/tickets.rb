@@ -22,7 +22,10 @@ def self.all
   SqlRunner.run(sql)
 end
 
-
+def self.delete_all
+  sql = "DELETE FROM tickets"
+  SqlRunner.run(sql)
+end
 
 
 

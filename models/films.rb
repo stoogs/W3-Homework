@@ -23,6 +23,12 @@ def self.all
 end
 
 
+def self.delete_all
+  sql = "DELETE FROM films"
+SqlRunner.run(sql)
+end
+
+
 
 
 

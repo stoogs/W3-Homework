@@ -19,3 +19,18 @@ p ticket1
 p Ticket.all
 p Film.all
 p Customer.all
+
+
+
+
+
+ticket1 = Ticket.new("customer_id" => customer1.id, "film_id" => film1.id)
+ticket1.save
+customer1 = Customer.new("name" => "Jermaine", "funds" => 100)
+customer1.save
+film1 = Film.new("title" => "Dumb & Dumber", "price" => 10)
+film1.save
+
+Film.delete_all
+Ticket.delete_all
+Customer.delete_all
