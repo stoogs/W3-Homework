@@ -35,6 +35,24 @@ def self.delete_by_id(c_id)
 end
 
 
+def update
+  sql = "UPDATE customers SET (name,funds) = ($1,$2) WHERE id = $3"
+  values = [@name, @funds, @id]
+  SqlRunner.run(sql, values)
+
+end
+
+def find_film_by_customer
+  sql = "SELECT films.* FROM films
+  JOIN tickets
+  ON tickets.film_id = film_id
+  WHERE customer_id = $1"
+  values = [@id]
+  f_details = SqlRunner.run(sql,values)
+  result = f_details.map {|film| Film.new(film)}
+p result
+  return result
+end
 
 
 
