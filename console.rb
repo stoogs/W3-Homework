@@ -31,6 +31,8 @@ customer1.save
 film1 = Film.new("title" => "Dumb & Dumber", "price" => 10)
 film1.save
 
-Film.delete_all
-Ticket.delete_all
-Customer.delete_all
+# Film.delete_all
+# Ticket.delete_all
+Customer.delete_by_id(19)
+Ticket.delete_by_id(27)
+Film.delete_by_id(20)

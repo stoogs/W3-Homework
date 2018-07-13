@@ -27,7 +27,11 @@ def self.delete_all
   SqlRunner.run(sql)
 end
 
-
+def self.delete_by_id(t_id)
+  sql = "DELETE FROM tickets WHERE id = $1"
+  value = [t_id]
+  SqlRunner.run(sql,value)
+end
 
 
 

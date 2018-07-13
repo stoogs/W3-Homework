@@ -28,8 +28,11 @@ def self.delete_all
 SqlRunner.run(sql)
 end
 
-
-
+def self.delete_by_id(f_id)
+  sql = "DELETE FROM films WHERE id = $1"
+  value = [f_id]
+  SqlRunner.run(sql,value)
+end
 
 
 
