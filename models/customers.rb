@@ -17,7 +17,10 @@ class Customer
     @id = add_customer[0]['id'].to_i
   end
 
-
+def self.all
+  sql = "SELECT * FROM customers"
+  SqlRunner.run(sql)
+end
 
 
 
