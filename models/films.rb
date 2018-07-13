@@ -49,7 +49,6 @@ def find_customer_by_film
   c_details = SqlRunner.run(sql,values)
 
   result = c_details.map {|customer| Customer.new(customer)}
-p result
   return result
 end
 

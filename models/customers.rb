@@ -50,7 +50,6 @@ def find_film_by_customer
   values = [@id]
   f_details = SqlRunner.run(sql,values)
   result = f_details.map {|film| Film.new(film)}
-p result
   return result
 end
 
