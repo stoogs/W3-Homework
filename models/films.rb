@@ -10,8 +10,12 @@ class Film
   end
 
 
-
-
+def save
+sql = "INSERT INTO films (title,price) VALUES ($1,$2) RETURNING id"
+values = [@title,@price]
+add_film = SqlRunner.run(sql,values)
+@id = add_film[0]['id'].to_i
+end
 
 
 
