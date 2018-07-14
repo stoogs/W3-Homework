@@ -33,12 +33,10 @@ def self.delete_by_id(c_id)
   SqlRunner.run(sql,value)
 end
 
-
 def update
   sql = "UPDATE customers SET (name,funds) = ($1,$2) WHERE id = $3"
   values = [@name, @funds, @id]
   SqlRunner.run(sql, values)
-
 end
 
 def find_film_by_customer
@@ -48,23 +46,15 @@ def find_film_by_customer
   WHERE customer_id = $1"
   values = [@id]
   f_details = SqlRunner.run(sql,values)
-  result = f_details.map {|film| Film.new(film)}
-  return result
+  return f_details.map {|film| Film.new(film)}
 end
 
-def customer_buy_ticket
-  sql = "UPDATE customers SET (funds) = ($1,$2) WHERE id = $3"
-  values = [@name, @funds, @id]
-  SqlRunner.run(sql, values)
-end
 
 def customer_buy_ticket(film_cost)
-
-(@funds >= film_cost ? @funds -= film_cost : (p "Sorry, you need £#{film_cost}"))
+@funds >= film_cost ? @funds -= film_cost : (p "Sorry, you need £#{film_cost}")
 sql = "UPDATE customers SET funds = $1 WHERE id = $2"
 values = [@funds, @id]
 SqlRunner.run(sql,values)
-
 end
 
 
