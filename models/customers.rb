@@ -22,7 +22,6 @@ def self.all
   SqlRunner.run(sql)
 end
 
-
 def self.delete_all
   sql = "DELETE FROM customers"
   SqlRunner.run(sql)
@@ -53,7 +52,20 @@ def find_film_by_customer
   return result
 end
 
+def customer_buy_ticket
+  sql = "UPDATE customers SET (funds) = ($1,$2) WHERE id = $3"
+  values = [@name, @funds, @id]
+  SqlRunner.run(sql, values)
+end
 
+def customer_buy_ticket(film_cost)
+
+(@funds >= film_cost ? @funds -= film_cost : (p "Sorry, you need £#{film_cost}"))
+sql = "UPDATE customers SET funds = $1 WHERE id = $2"
+values = [@funds, @id]
+SqlRunner.run(sql,values)
+
+end
 
 
 

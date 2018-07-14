@@ -43,13 +43,17 @@ ticket1.save
 # film1.update
 # film1.save
 
-# customer2 = Customer.new("name" => "C_Updated", "funds" => 2000)
-# customer2.save
-# film2 = Film.new("title" => "F2", "price" => 100)
-# film2.save
-# ticket2 = Ticket.new("customer_id" => customer2.id, "film_id" => film2.id)
-# ticket2.save
-p "PRINT FILM1 BY CUSTOMER"
-p film1.find_customer_by_film
-p "PRINT CUSTOMER1 BY FILM"
-p customer1.find_film_by_customer
+customer2 = Customer.new("name" => "C_Updated", "funds" => 2000)
+customer2.save
+film2 = Film.new("title" => "F2", "price" => 110)
+film2.save
+ticket2 = Ticket.new("customer_id" => customer2.id, "film_id" => film2.id)
+ticket2.save
+# p "PRINT FILM1 BY "
+# p film1.find_customer_by_film
+# p "PRINT CUSTOMER1 BY FILM"
+# p customer1.find_film_by_customer
+
+p customer1.customer_buy_ticket(film1.price)
+
+p customer1.customer_buy_ticket(film2.price)
