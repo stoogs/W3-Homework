@@ -2,8 +2,6 @@ require_relative('models/customers')
 require_relative('models/films')
 require_relative('models/tickets')
 
-
-
 # --------- MVP Tests ---------------
 # Ticket   =  @id   @customer_id  @film_id
 # Film     =  @id   @title,       @price
@@ -77,21 +75,49 @@ require_relative('models/tickets')
 # Customer.customer_check_tickets_bought(2)
 
 
-# ------------------ TEST How many customers are going to watch a certain film
+# ------------------ TEST How many customers are going to watch a certain film - Do Creation side.
 # ------------------ Customer 1 bought 2 tickets to film1
+# customer1 = Customer.new("name" => "Daniel Day Lewis - C1", "funds" => 100)
+# customer1.save
+# film1 = Film.new("title" => "There Will Be Blood - F1", "price" => 10)
+# film1.save
+# ticket1 = Ticket.new("customer_id" => customer1.id, "film_id" => film1.id)
+# ticket1.save
+# ticket1.save
+# Film.how_many_customers_watching_film(film1.id)
+# # ------------------ Customer 1 bought 2 tickets to film1
+# customer2 = Customer.new("name" => "Daniel Day Lewis - C2", "funds" => 100)
+# customer2.save
+# ticket1 = Ticket.new("customer_id" => customer2.id, "film_id" => film1.id)
+# ticket1.save
+# ticket1.save
+# Film.how_many_customers_watching_film(film1.id)
+# Film.how_many_customers_watching_film(2)
 
-customer1 = Customer.new("name" => "Daniel Day Lewis - C1", "funds" => 100)
-customer1.save
-film1 = Film.new("title" => "There Will Be Blood - F1", "price" => 10)
-film1.save
-ticket1 = Ticket.new("customer_id" => customer1.id, "film_id" => film1.id)
-ticket1.save
-ticket1.save
-Film.how_many_customers_watching_film(film1.id)
-# ------------------ Customer 1 bought 2 tickets to film1
-customer2 = Customer.new("name" => "Daniel Day Lewis - C2", "funds" => 100)
-customer2.save
-ticket1 = Ticket.new("customer_id" => customer2.id, "film_id" => film1.id)
-ticket1.save
-ticket1.save
-Film.how_many_customers_watching_film(film1.id)
+# ------------------ TEST How many customers are going to watch a certain film - PULL FROM DB
+# customer1 = Customer.new("name" => "Daniel Day Lewis - C1", "funds" => 100)
+# customer1.save
+# customer2 = Customer.new("name" => "Daniel Day Lewis - C1", "funds" => 100)
+# customer2.save
+# film1 = Film.new("title" => "There Will Be Blood - F1", "price" => 10)
+# film1.save
+# ticket1 = Ticket.new("customer_id" => customer1.id, "film_id" => film1.id)
+# ticket2 = Ticket.new("customer_id" => customer2.id, "film_id" => film1.id)
+#
+# ticket1.save
+# ticket1.save
+# ticket1.save
+# # ----------------- Get array of film_id's from DB. Count.
+# result = Ticket.all
+# film_id_array = result.map {|x| x["film_id"]}
+# by_id = film_id_array.select {|id| id == "1"}
+# p "There are #{by_id.length} films, id 1"
+# # ----------------- Add to array of film_id's from DB. Count.
+# ticket2.save
+# ticket2.save
+# result = Ticket.all
+# film_id_array = result.map {|x| x["film_id"]}
+# by_id = film_id_array.select {|id| id == "1"}
+# p "There are now #{by_id.length} films, id 1"
+
+# ------------------ ADVANCED EXTENSIONS ------------------------
