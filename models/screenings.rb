@@ -23,5 +23,19 @@ class Screening
     SqlRunner.run(sql)
   end
 
+def film_screening_time()
+sql = "SELECT screenings.* FROM screenings
+WHERE screening_id = $1"
+#   sql = "SELECT screenings.*, films.* FROM screenings,films
+# WHERE screening_id = $1"
+  values = [@screening_id]
+  screening_time = SqlRunner.run(sql,values)
+
+  p screening_time.class
+  p film_times = screening_time.map {|x| x}
+#
+#   p film_times["start_time".to_i]
+end
+
 
 end # Class end

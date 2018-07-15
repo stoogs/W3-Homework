@@ -8,19 +8,6 @@ require_relative('models/screenings')
 # Film     =  @id   @title,        @price
 # Customer =  @id   @name          @funds
 # Screening = @id   @screening_id  @start_time   @tickets_sold *******************************************************************
-# ------------------ ADVANCED EXTENSIONS ------------------------
-# ------------ ADD Screening * list screenings
-customer1 = Customer.new("name" => "Daniel Day Lewis - C1", "funds" => 100)
-customer1.save
-film1 = Film.new("title" => "There Will Be Blood - F1", "price" => 10)
-film1.save
-ticket1 = Ticket.new("customer_id" => customer1.id, "film_id" => film1.id)
-ticket1.save
-screening1 = Screening.new("screening_id" => film1.id, "start_time" => "1400", "tickets_sold" => 4 )
-
-screening1.save
-p Screening.all
-
 
 # --------- Create/Save to DB ---------------
 # customer1 = Customer.new("name" => "Daniel Day Lewis - C1", "funds" => 100)
@@ -134,3 +121,21 @@ p Screening.all
 # film_id_array = result.map {|x| x["film_id"]}
 # by_id = film_id_array.select {|id| id == "1"}
 # p "There are now #{by_id.length} films, id 1"
+
+# ------------------ ADVANCED EXTENSIONS ------------------------
+# ------------ ADD Screening * list screenings
+customer1 = Customer.new("name" => "Daniel Day Lewis - C1", "funds" => 100)
+customer1.save
+film1 = Film.new("title" => "There Will Be Blood - F2", "price" => 20)
+film1.save
+film2 = Film.new("title" => "There Will Be Blood - F1", "price" => 10)
+film2.save
+ticket1 = Ticket.new("customer_id" => customer1.id, "film_id" => film1.id)
+ticket1.save
+screening1 = Screening.new("screening_id" => film1.id, "start_time" => "1400", "tickets_sold" => 4 )
+screening1.save
+screening2 = Screening.new("screening_id" => film2.id, "start_time" => "1600", "tickets_sold" => 7 )
+screening2.save
+# ------------ List screening times by film id
+screening1.film_screening_time
+screening2.film_screening_time
