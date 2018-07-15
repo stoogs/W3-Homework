@@ -5,6 +5,7 @@ DROP TABLE IF EXISTS customers;
 
 
 
+
 CREATE TABLE customers (
   id SERIAL4 PRIMARY KEY,
   name VARCHAR(255),
@@ -27,5 +28,6 @@ CREATE TABLE screenings (
 id SERIAL4 PRIMARY KEY,
 screening_id INT4 REFERENCES films(id),
 start_time VARCHAR(255),
-tickets_sold INT2
+tickets_sold INT2,
+film_name VARCHAR(255)
 );
