@@ -57,22 +57,41 @@ require_relative('models/tickets')
 
 # ------------------ TEST Customer How Many Tickets Bought
 # ------------------ Customer 1 has 3 tickets
+# customer1 = Customer.new("name" => "Daniel Day Lewis - C2", "funds" => 100)
+# customer1.save
+# film1 = Film.new("title" => "There Will Be Blood - F1", "price" => 10)
+# film1.save
+# ticket1 = Ticket.new("customer_id" => customer1.id, "film_id" => film1.id)
+# ticket1.save
+# ticket1.save
+# ticket1.save
+# # ------------------ Customer 2 has 2 tickets
+# customer2 = Customer.new("name" => "Daniel Day Lewis - C2", "funds" => 100)
+# customer2.save
+# film1 = Film.new("title" => "There Will Be Blood - F1", "price" => 10)
+# film1.save
+# ticket1 = Ticket.new("customer_id" => customer2.id, "film_id" => film1.id)
+# ticket1.save
+# ticket1.save
+# Customer.customer_check_tickets_bought(1)
+# Customer.customer_check_tickets_bought(2)
 
-customer1 = Customer.new("name" => "Daniel Day Lewis - C2", "funds" => 100)
+
+# ------------------ TEST How many customers are going to watch a certain film
+# ------------------ Customer 1 bought 2 tickets to film1
+
+customer1 = Customer.new("name" => "Daniel Day Lewis - C1", "funds" => 100)
 customer1.save
 film1 = Film.new("title" => "There Will Be Blood - F1", "price" => 10)
 film1.save
 ticket1 = Ticket.new("customer_id" => customer1.id, "film_id" => film1.id)
 ticket1.save
 ticket1.save
-ticket1.save
-# ------------------ Customer 2 has 2 tickets
+Film.how_many_customers_watching_film(film1.id)
+# ------------------ Customer 1 bought 2 tickets to film1
 customer2 = Customer.new("name" => "Daniel Day Lewis - C2", "funds" => 100)
 customer2.save
-film1 = Film.new("title" => "There Will Be Blood - F1", "price" => 10)
-film1.save
 ticket1 = Ticket.new("customer_id" => customer2.id, "film_id" => film1.id)
 ticket1.save
 ticket1.save
-Customer.customer_check_tickets_bought(1)
-Customer.customer_check_tickets_bought(2)
+Film.how_many_customers_watching_film(film1.id)

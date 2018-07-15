@@ -51,7 +51,16 @@ def find_customer_by_film
   return result
 end
 
-
+def self.how_many_customers_watching_film(passed_id)
+  sql = "SELECT * FROM films
+  JOIN tickets
+  ON films.id = film_id
+  WHERE film_id = $1"
+  values = [passed_id]
+  watching = SqlRunner.run(sql,values)
+  check = watching.map {|x| x}
+  p "Movie #{passed_id} has #{check.length} customers"
+end
 
 
 
