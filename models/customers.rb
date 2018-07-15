@@ -55,10 +55,19 @@ def customer_buy_ticket(film_cost)
 sql = "UPDATE customers SET funds = $1 WHERE id = $2"
 values = [@funds, @id]
 SqlRunner.run(sql,values)
+
 end
 
-
-
+def self.customer_check_tickets_bought(passed_id)
+  sql = "SELECT * FROM customers
+  JOIN tickets
+  ON customers.id = customer_id
+  WHERE customer_id = $1"
+  values = [passed_id]
+  f_details = SqlRunner.run(sql,values)
+  check = f_details.map {|x| x}
+  p "Customer #{passed_id} has #{check.length} tickets"
+end
 
 
 

@@ -8,20 +8,21 @@ require_relative('models/tickets')
 # Ticket   =  @id   @customer_id  @film_id
 # Film     =  @id   @title,       @price
 # Customer =  @id   @name         @funds
+# *******************************************************************
 # --------- Create/Save to DB ---------------
-customer1 = Customer.new("name" => "Daniel Day Lewis - C1", "funds" => 100)
-customer1.save
-film1 = Film.new("title" => "There Will Be Blood - F1", "price" => 10)
-film1.save
-ticket1 = Ticket.new("customer_id" => customer1.id, "film_id" => film1.id)
-ticket1.save
-customer2 = Customer.new("name" => "Marky Wahlberg - C2", "funds" => 2000)
-customer2.save
-film2 = Film.new("title" => "Boogie Nights - F2", "price" => 110)
-film2.save
-ticket2 = Ticket.new("customer_id" => customer2.id, "film_id" => film2.id)
-ticket2.save
-#
+# customer1 = Customer.new("name" => "Daniel Day Lewis - C1", "funds" => 100)
+# customer1.save
+# film1 = Film.new("title" => "There Will Be Blood - F1", "price" => 10)
+# film1.save
+# ticket1 = Ticket.new("customer_id" => customer1.id, "film_id" => film1.id)
+# ticket1.save
+# customer2 = Customer.new("name" => "Marky Wahlberg - C2", "funds" => 2000)
+# customer2.save
+# film2 = Film.new("title" => "Boogie Nights - F2", "price" => 110)
+# film2.save
+# ticket2 = Ticket.new("customer_id" => customer2.id, "film_id" => film2.id)
+# ticket2.save
+# ********************************************************************
 # # ------------------  Display All
 # p Ticket.all
 # p Film.all
@@ -53,3 +54,25 @@ ticket2.save
 # ------------------ TEST Customer Buy Ticket
 # p customer1.customer_buy_ticket(film1.price) # Can Buy
 # p customer1.customer_buy_ticket(film2.price) # Can't afford
+
+# ------------------ TEST Customer How Many Tickets Bought
+# ------------------ Customer 1 has 3 tickets
+
+customer1 = Customer.new("name" => "Daniel Day Lewis - C2", "funds" => 100)
+customer1.save
+film1 = Film.new("title" => "There Will Be Blood - F1", "price" => 10)
+film1.save
+ticket1 = Ticket.new("customer_id" => customer1.id, "film_id" => film1.id)
+ticket1.save
+ticket1.save
+ticket1.save
+# ------------------ Customer 2 has 2 tickets
+customer2 = Customer.new("name" => "Daniel Day Lewis - C2", "funds" => 100)
+customer2.save
+film1 = Film.new("title" => "There Will Be Blood - F1", "price" => 10)
+film1.save
+ticket1 = Ticket.new("customer_id" => customer2.id, "film_id" => film1.id)
+ticket1.save
+ticket1.save
+Customer.customer_check_tickets_bought(1)
+Customer.customer_check_tickets_bought(2)

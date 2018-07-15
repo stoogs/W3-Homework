@@ -47,7 +47,6 @@ def find_customer_by_film
   WHERE film_id = $1"
   values = [@id]
   c_details = SqlRunner.run(sql,values)
-
   result = c_details.map {|customer| Customer.new(customer)}
   return result
 end
