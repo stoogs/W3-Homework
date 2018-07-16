@@ -29,5 +29,5 @@ id SERIAL4 PRIMARY KEY,
 screening_id INT4 REFERENCES films(id),
 start_time VARCHAR(255),
 tickets_sold INT2,
-film_name VARCHAR(255)
+title VARCHAR(255)
 );

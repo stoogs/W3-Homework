@@ -7,7 +7,7 @@ require_relative('models/screenings')
 # Ticket   =  @id   @customer_id   @film_id
 # Film     =  @id   @title,        @price
 # Customer =  @id   @name          @funds
-# Screening = @id   @screening_id  @start_time   @tickets_sold @film_name *******************************************************************
+# Screening = @id   @screening_id  @start_time   @tickets_sold @title *******************************************************************
 
 #--------- Create/Save to DB ---------------
 customer1 = Customer.new("name" => "Daniel Day Lewis - C1", "funds" => 100)
@@ -34,13 +34,13 @@ p "PRINT CUSTOMER1 BY FILM"
 p film1.title
 result = customer1.find_film_by_customer.map {|customer| p customer}
 # ------------------  Delete By ID
-Customer.delete_by_id(1)
-Ticket.delete_by_id(1)
-Film.delete_by_id(1)
-# ------------------  Delete All
-Customer.delete_all
-Film.delete_all
-Ticket.delete_all
+# Customer.delete_by_id(1)
+# Ticket.delete_by_id(1)
+# Film.delete_by_id(1)
+# # ------------------  Delete All
+# Customer.delete_all
+# Film.delete_all
+# Ticket.delete_all
 # ------------------  Customer Update DB
 customer1.funds = 1337
 customer1.name = "Rich Man"
@@ -132,9 +132,9 @@ film2 = Film.new("title" => "There Will Be Blood - F2", "price" => 10)
 film2.save
 ticket1 = Ticket.new("customer_id" => customer1.id, "film_id" => film1.id)
 ticket1.save
-screening1 = Screening.new("screening_id" => film1.id, "start_time" => "1400", "tickets_sold" => 4, "film_name" => film1.title )
+screening1 = Screening.new("screening_id" => film1.id, "start_time" => "1400", "tickets_sold" => 4, "title" => film1.title )
 screening1.save
-screening2 = Screening.new("screening_id" => film2.id, "start_time" => "1600", "tickets_sold" => 7, "film_name" => film2.title  )
+screening2 = Screening.new("screening_id" => film2.id, "start_time" => "1600", "tickets_sold" => 7, "title" => film2.title  )
 screening2.save
 # ------------ List screening times by film id
 p screening1
